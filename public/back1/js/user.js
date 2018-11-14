@@ -1,5 +1,3 @@
-import { template } from "handlebars";
-
 $(function () {
   
   var currentPage = 1;
@@ -16,12 +14,12 @@ $(function () {
         pageSize: pageSize
       },
       success: function ( info ) {
-        console.log(info);
+        // console.log(info);
         
         var htmlStr = template("tpl", info);
         $('.lt_content tbody').html(htmlStr);
 
-        $('#paginator').bootstrapPaginato({
+        $('#paginator').bootstrapPaginator({
 
           bootstrapMajorVersion: 3,
           currentPage: info.page,
