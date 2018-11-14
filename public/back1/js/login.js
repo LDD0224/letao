@@ -57,7 +57,7 @@ $(function () {
         console.log(info);
         
         if (info.success) {
-          location.href == "index.html";
+          location.href = "index.html";
         }
         if (info.error === 1000) {
           alert("用户名不存在");
