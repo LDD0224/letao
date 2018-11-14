@@ -7,7 +7,7 @@ $(function () {
     feedbackIcons: {
       valid: 'glyphicon glyphicon-ok',    // 校验成功
       invalid: 'glyphicon glyphicon-remove',  // 校验失败
-      validating: 'glyphicon glyphicon-refresh'  // 校验中
+      validating: 'glyphicon glyphicon-refresh'  // 校验中 
     },
 
     // 配置校验字段  (需要先在 input 中配置name)
@@ -85,7 +85,7 @@ $(function () {
         }
         if ( info.error === 1001 ) {
           alert("密码错误");
-          $('#form').data("bootstrapValidator").updataStatus("username", "INVALID", "callback");
+          $('#form').data("bootstrapValidator").updataStatus("password", "INVALID", "callback");
         }
       }      
     })
