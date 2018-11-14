@@ -1,7 +1,7 @@
 $(function () {
 
   // 1. 进行表单校验配置  
-  $('#form').boootstrapValidator({
+  $('#form').bootstrapValidator({
 
     feedbackIcons: {
       valid: 'glyphicon glyphicon-ok',  // 校验成功
@@ -50,10 +50,12 @@ $(function () {
 
     $.ajax({
       type: "post",
-      url: "/employee/emplyeeLogin",
+      url: "/employee/employeeLogin",
       data: $('#form').serialize(),
       dataType: "json",
       success: function (info) {
+        console.log(info);
+        
         if (info.success) {
           location.href == "index.html";
         }
@@ -61,13 +63,13 @@ $(function () {
           alert("用户名不存在");
           $('#form').data("bootstrapValidator").updataStatus("username", "INVALID", "callbck");
         }
-        if (info.error === 1000) {
+        if (info.error === 1001) {
           alert("密码错误");
           $('#form').data("bootstrapValidator").updataStatus("password", "INVALID", "callbck");
         }
       }
     })
-    
+
   });
 
   // 3. 重置功能, reset按钮, 本身就可以重置内容, 这边只需要再重置状态即可  
