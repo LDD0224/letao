@@ -16,8 +16,8 @@ ul {
 }
 
 /* 重置时, 注意权重问题 */
-.table.table-borderd th,
-.table.table-borderd td {
+.table.table-bordered th,
+.table.table-bordered td {
   text-align: center;
   vertical-align: middle;
 }
