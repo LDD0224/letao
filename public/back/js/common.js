@@ -1,5 +1,3 @@
-import { setTimeout } from "timers";
-
 // ajax全局事件
 // .ajaxComplete()  当每个ajax完成时调用,  (不管成功还是失败, 都调用)
 // .ajaxSuccess()   当每个ajax成功响应时调用
@@ -9,7 +7,7 @@ import { setTimeout } from "timers";
 // .ajaxStop()      当所有的ajax请求完成时调用
 
 //第一个ajax发送时调用
-$(doument).ajaxStart(function () {
+$(document).ajaxStart(function () {
   // 开启进度条
   NProgress.start();
 });
