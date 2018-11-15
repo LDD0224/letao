@@ -46,21 +46,20 @@ $(function () {
   });
 
   // 模态框的按钮点击事件
-  $('#logoutBtn').click(function () {
-    
+  $('#logoutBtn').click(function() {
+
     // 发送ajax请求, 让后台销毁当前用户的登录状态
     $.ajax({
       type: "get",
       url: "/employee/employeeLogout",
       dataType: "json",
-      success: function ( info ) {
-        // console.log(info);
+      success: function( info ) {
+        // console.log( info );
         if ( info.success ) {
           // 退出成功
           location.href = "login.html";
         }
       }
-    })
+    });
   })
-
 })
