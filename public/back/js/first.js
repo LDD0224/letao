@@ -39,11 +39,13 @@ $(function () {
     })
   };
 
+
   // 2. 点击添加按钮
   $('#addBtn').click(function () {
     // 显示添加模态框
     $('#addModal').modal("show");
   });
+
 
   // 3. 表单校验功能
   $('#form').bootstrapValidator({
@@ -67,6 +69,7 @@ $(function () {
     }
   });
 
+  
   // 4. 注册表单校验成功事件, 阻止默认的提交, 通过ajax提交
   $('#form').on("success.form.bv", function (e) {
     e.preventDefault();
