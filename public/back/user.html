@@ -70,7 +70,11 @@
         <tbody>
           <!-- 挖个坑 -->
         </tbody>
-      </table>      
+      </table>    
+      <!-- 准备分页容器-->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
     </div>    
   </div>
 </div>
@@ -101,6 +105,30 @@
   </div>
 </div>
 
+<!-- 用户启用禁用模态框 -->
+<div class="modal fade" tabindex="-1" id="userModal">
+  <!-- 内部的模态框 -->
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <!-- 头部 -->
+      <div class="modal-header">
+        <!-- data-dismiss="modal" 可以用于关闭模态框 -->        
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>        
+        <h4 class="modal-title">温馨提示</h4>
+      </div>
+      <!-- 中间 -->
+      <div class="modal-body">
+        <p class="red"><i class="glyphicon glyphicon-info-sign"></i><span>你确定要执行此操作吗？</span></p>
+      </div>
+      <!-- 底部 -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="confirmBtn">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 准备模板
     1. type="text/template"
     2. type="text/html"
@@ -108,14 +136,15 @@
 <script type="text/template" id="tmp">
   {{ each rows v i }}
     <tr>
-      <td>{{ v.id }}</td>              
+      <!-- i+1 当前页第几个 +  前面已经有多少个(page-1) * size  -->      
+      <td>{{ i + 1 + (page - 1) * size }}</td>              
       <td>{{ v.username }}</td>
       <td>{{ v.mobile }}</td>
       <!-- isDelete 标记当前用户的状态
            1: 表示当前用户 正常启用
            0: 表示当前用户 被禁用 -->
       <td>{{ v.isDelete === 1 ? "正常" : "已禁用" }}</td>      
-      <td>
+      <td data-id="{{ v.id }}">
         {{ if v.isDelete === 1 }}
           <button class="btn btn-danger">禁用</button>
         {{ else }}
@@ -129,6 +158,7 @@
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/artTemplate/template-web.js"></script>
 <script src="./js/common.js"></script>
