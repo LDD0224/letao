@@ -33,6 +33,29 @@ $(function () {
     })
   };
 
-  // 给启用禁用按钮, 添加点击事件 (通过事件委托)  
+  // 给启用禁用按钮, 添加点击事件 (通过事件委托)
+  $('.lt_content tbody').on("click", ".btn", function () {
+    $('#userModal').modal("show");
+    currentId = $(this).hasClass("btn-danger") ? 0 : 1;
+  });
+
+  // 确认按钮被点击, 发送ajax请求, 改变用户状态
+  $('#confirmBtn').click(function () {
+    $.ajax({
+      type: "post",
+      url: "/user/updateUser",
+      data: {
+        id: currentId,
+        isDelete: isDelete
+      },
+      dataType: "json",
+      success: function ( info ) {
+        if ( info.success ) {
+          $('#userModal').modal("hide");
+          render();
+        }
+      }
+    })
+  });
 
 })
