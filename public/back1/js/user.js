@@ -20,8 +20,8 @@ $(function () {
         var htmlStr = template("tmp", info);
         $('tbody').html( htmlStr );
         // 进行分页初始化
-        $('#paginator').bootstarpPaginator({
-          bootstarpMajorVersion: 3,
+        $('#paginator').bootstrapPaginator({
+          bootstrapMajorVersion: 3,
           totalPages: Math.ceil( info.total / info.size ),
           currentPage: info.page,
           onPageClicked: function (a, b, c, page) {
@@ -36,7 +36,8 @@ $(function () {
   // 给启用禁用按钮, 添加点击事件 (通过事件委托)
   $('.lt_content tbody').on("click", ".btn", function () {
     $('#userModal').modal("show");
-    currentId = $(this).hasClass("btn-danger") ? 0 : 1;
+    currentId = $(this).parent().data("id");
+    isDelete = $(this).hasClass("btn-danger") ? 0 : 1;
   });
 
   // 确认按钮被点击, 发送ajax请求, 改变用户状态
