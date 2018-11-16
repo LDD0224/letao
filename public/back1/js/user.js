@@ -22,10 +22,17 @@ $(function () {
         // 进行分页初始化
         $('#paginator').bootstarpPaginator({
           bootstarpMajorVersion: 3,
-          totalPages: Math.ceil( info.total / info.size );
+          totalPages: Math.ceil( info.total / info.size ),
+          currentPage: info.page,
+          onPageClicked: function (a, b, c, page) {
+            currentPage = page;
+            render();
+          }
         })        
       }
     })
   };
+
+  // 给启用禁用按钮, 添加点击事件 (通过事件委托)  
 
 })
