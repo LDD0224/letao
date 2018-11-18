@@ -29,7 +29,7 @@
       <li><a href="user.html"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
       <li>
         <a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
-        <div class="child" style="display: block;">
+        <div class="child">
           <a href="first.html">一级分类</a>
           <a href="second.html">二级分类</a>
         </div>
@@ -112,70 +112,71 @@
   <!-- 内部的模态框 -->
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="form"></form>
+      <form id="form">
         <!-- 头部 -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           <h4 class="modal-title">添加商品</h4>
         </div>     
-    </div>
-    <!-- 中间 -->
-    <div class="modal-body">
-      <!-- 在每一行外层要套一个 form-group 父元素 (规范)
-            将来表单校验依赖于这个父元素, 实现添加提示信息
-            如果没有套一个 form-group, 表单校验插件会报错
-      -->
-      <div class="form-group">
-        <div class="dropdown">
-          <!-- 下拉菜单 -->
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-            <span id="dropdownText">请选择二级分类</span>        
-            <span class="caret"></span>
-          </button> 
-          <ul class="dropdown-menu">
-            <!-- 挖个坑 -->
-          </ul> 
+        <!-- 中间 -->
+        <div class="modal-body">
+          <!-- 在每一行外层要套一个 form-group 父元素 (规范)
+                将来表单校验依赖于这个父元素, 实现添加提示信息
+                如果没有套一个 form-group, 表单校验插件会报错
+          -->
+          <div class="form-group">
+            <div class="dropdown">
+              <!-- 下拉菜单 -->
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                <span id="dropdownText">请选择二级分类</span>        
+                <span class="caret"></span>
+              </button> 
+              <ul class="dropdown-menu">
+                <!-- 挖个坑 -->
+              </ul> 
+            </div>
+            <input type="hidden" name="brandId">
+            <!-- 标记当前商品是否上下架, 默认上架 -->
+            <input type="hidden" name="statu" value="1">
+          </div>
+          <div class="form-group">
+            <input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
+          </div>
+          <div class="form-group">
+            <textarea name="proDesc" class="form-control" placeholder="请输入商品描述" cols="30" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" name="num" class="form-control" placeholder="请输入商品库存">
+          </div>
+          <div class="form-group">
+            <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+          </div>
+          <div class="form-group">
+            <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+          </div>
+          <div class="form-group">
+            <input type="text" name="price" class="form-control" placeholder="请输入商品现价">
+          </div>
+          <div class="form-group">
+            <label for="fileupload" class="btn btn-default">上传图片</label>
+            <!--
+              1. data-url 指定接口地址           将来给插件去获取的, 去发送ajax的
+              2. name     指定后台接收的参数名
+              3. multiple 可以选择多个文件 (一般用于多文件上传)
+            -->
+            <input multiple type="file" name="pic1" data-url="/product/addProductPic" id="fileupload" style="display: none;">
+          </div>
+          <div class="form-group" id="imgBox">
+            <!-- 准备一个隐藏域, 专门用于校验 -->
+            <input type="hidden" name="picStatus">
+          </div>
         </div>
-        <input type="hidden" name="brandId">
-        <!-- 标记当前商品是否上下架, 默认上架 -->
-        <input type="hidden" name="statu" value="1">
-      </div>
-      <div class="form-group">
-        <input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
-      </div>
-      <div class="form-group">
-        <input type="text" name="proDesc" class="form-control" placeholder="请输入商品描述" cols="30" rows="4">
-      </div>
-      <div class="form-group">
-        <input type="text" name="num" class="form-control" placeholder="请输入商品库存">
-      </div>
-      <div class="form-group">
-        <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
-      </div>
-      <div class="form-group">
-        <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
-      </div>
-      <div class="form-group">
-        <input type="text" name="price" class="form-control" placeholder="请输入商品现价">
-      </div>
-      <div class="form-group">
-        <label for="fileupload" class="btn btn-default">上传图片</label>
-        <!--
-          1. data-url 指定接口地址           将来给插件去获取的, 去发送ajax的
-          2. name     指定后台接收的参数名
-          3. multiple 可以选择多个文件 (一般用于多文件上传)
-        -->
-        <input multiple type="file" name="pic1" data-url="/product/addProductPic" id="fileupload" style="display: none;">
-      </div>
-      <div class="form-group">
-        <!-- 准备一个隐藏域, 专门用于校验 -->
-        <input type="hidden" name="picStatus">
-      </div>
-    </div>
-    <!-- 底部 -->
-    <div class="form-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-      <button type="submit" class="btn btn-primary">添加</button>      
+        <!-- 底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary">添加</button>      
+        </div>
+      </form>
     </div>
   </div>  
 </div>
