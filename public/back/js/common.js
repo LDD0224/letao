@@ -60,6 +60,6 @@ $(function () {
           location.href = "login.html";
         }
       }
-    });
-  })
+    })
+  });
 })
