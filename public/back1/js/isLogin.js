@@ -11,7 +11,7 @@ $.ajax({
       // console.log("用户已登录, 继续访问");
     }
     if ( info.error === 400 ) {
-      location.herf = "login.html";
+      location.href = "login.html";
     }
   }
 })
