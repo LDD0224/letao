@@ -19,3 +19,27 @@
   background-color: #fff;
   border-right: none;
 }
+
+.lt_category_right {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+.lt_category_right li {
+  float: left;
+  width: 33.3%;
+}
+.lt_category_right li a {
+  display: block;
+}
+.lt_category_right li img {
+  width: 70px;
+  height: 50px;
+  margin: 0 auto;
+}
+.lt_category_right li p {
+  text-align: center;
+}
+.nomore {
+  padding: 10px;
+}
