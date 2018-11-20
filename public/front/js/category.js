@@ -8,6 +8,7 @@ $(function () {
     success: function ( info ) {
       // console.log(info);
       var htmlStr =  template("left_tpl", info);
+      
       $('.lt_category_left ul').html( htmlStr );
 
       // 根据返回回来的第一个 一级分类的 id 进行渲染
@@ -18,6 +19,8 @@ $(function () {
 
   // 2. 给左侧添加点击事件, 通过事件委托实现
   $('.lt_category_left').on("click", "a", function () {
+    console.log("qqqqqq");
+    
     // 高亮效果
     $(this).addClass("current").parent().siblings().find("a").removeClass("current");
     // 获取一级分类 id
@@ -25,7 +28,7 @@ $(function () {
     // 根据id渲染二级分类
     renderById(id);
   })  
-  // 根据 一级分类的 id 渲染 二级分类
+  // // 根据 一级分类的 id 渲染 二级分类
   function renderById(id) {
     $.ajax({
       type: "get",
@@ -35,7 +38,7 @@ $(function () {
       },
       dataType: "json",
       success: function ( info ) {
-        // console.log(info);
+        console.log(info);
         var htmlStr = template("right_tpl", info);
         $('.lt_category_right ul').html( htmlStr );
       }

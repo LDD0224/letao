@@ -6,8 +6,7 @@ $(function () {
     url: "/category/queryTopCategory",
     dataType: "json",
     success: function ( info ) {
-      console.log(info);
-      
+      // console.log(info);
       var htmlStr = template("left_tpl", info);
       $('.lt_category_left ul').html( htmlStr );
       renderById( info.rows[0].id );
@@ -21,7 +20,7 @@ $(function () {
     renderById(id);
   });
   // 根据 一级分类的 id 渲染 二级分类
-  function renderById() {
+  function renderById(id) {
     $.ajax({
       type: "get",
       url: "/category/querySecondCategory",
@@ -29,7 +28,7 @@ $(function () {
         id: id
       },
       dataType: "json",
-      success: function () {
+      success: function (info) {
         var htmlStr = template("right_tpl", info);
         $('.lt_category_right ul').html( htmlStr );
       }
