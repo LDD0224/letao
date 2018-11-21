@@ -18,9 +18,8 @@ $(function () {
     var jsonStr = localStorage.getItem("search_list") || '[]';
     // (2) 读取出来是json字符串, 转换成数组
     var arr =JSON.parse( jsonStr );
-    console.log(arr);
-    
-    // return arr;
+    // console.log(arr);
+    return arr;
   }
   // 读取本地历史, 根据数组, 进行页面渲染
   function render() {
@@ -36,7 +35,7 @@ $(function () {
   $('.lt_history').on("click", ".btn_empty", function () {
     // mui 确认框
     // 参数: 内容  标题  按钮的文本 arr  关闭确认框的回调函数
-    mui.confirm("你确定要清空历史记录嘛?", "温馨提示", ["取消", "确认"], function () {
+    mui.confirm("你确定要清空历史记录嘛?", "温馨提示", ["取消", "确认"], function (e) {
       // e.index 表示点击的按钮的下标 (索引)
       if ( e.index === 1 ) {
         // (2) 移除所有的本地历史记录数据
@@ -53,7 +52,10 @@ $(function () {
   $('.lt_history').on("click", ".btn_delete", function () {
     // (2) 获取需要删除的项的下标
     var index = $(this).data("index");
-    // 根据下标, 删除数组中的对应项
+    // console.log(index);
+
+    var arr = getHistory();
+    // (3) 根据下标删除数组中的对应项
     // arr.splice(从哪开始, 删几个, 添加的项1, 添加的项2, .... );
     arr.splice( index, 1 );
     // (4) 将修改后的数组, 转成 jsonStr, 存储到本地
@@ -63,7 +65,7 @@ $(function () {
   });
 
 
-  // 功能4: 添加单个历史记录功能
+  // 功能4: 添加单个历史记录功能 
   // (1) 给搜索按钮添加点击事件
   $('.search_btn').click(function () {
     // (2) 获取搜索框关键字
@@ -81,7 +83,7 @@ $(function () {
     if ( index != -1 ) {
       // 有重复项, 要删除
       arr.splice( index, 1 );
-    }    
+    }     
     // 2. 如果长度超过了 10个, 删除最后一个 pop()
     if ( arr.length >= 10 ) {
       // 删除最后一个

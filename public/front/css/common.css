@@ -140,6 +140,7 @@ ul {
 }
 
 .lt_product_item a img {
+  display: block;
   width: 240px;
   height: 220px;
 }

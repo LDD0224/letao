@@ -27,7 +27,7 @@ $(function () {
 
   // 功能2: 清空所有历史
   $('.lt_history').on("click", ".btn_empty", function () {
-    mui.confirm("你确定要清空历史记录嘛?", "温馨提示", ["取消", "确认"], function () {
+    mui.confirm("你确定要清空历史记录嘛?", "温馨提示", ["取消", "确认"], function (e) {
       if ( e.index === 1 ) {
         localStorage.removeItem("search_list");
         render();
@@ -39,6 +39,8 @@ $(function () {
   // 功能3: 删除单个历史记录
   $('.lt_history').on("click", ".btn_delete", function () {
     var index = $(this).data("index");
+    var arr = getHistory();
+    
     arr.splice( index, 1 );
     localStorage.setItem( "search_list", JSON.stringify(arr) );
     render();
