@@ -5,7 +5,7 @@ $(function () {
     type: "get",
     url: "/user/queryUserMessage",
     dataType: "json",
-    success: function () {
+    success: function (info) {
       // (1) 如果当前用户未登录, 后台返回 error
       if ( info.error === 400 ) {
         // 拦截跳转到登录页

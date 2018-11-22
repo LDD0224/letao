@@ -12,7 +12,7 @@ $(function () {
         // (1) 当前用户未登录,  后台返回 error
         if ( info.error ) {
           // 拦截跳转到登录页
-          location.href = "login.html?resetUrl=" + location.href;
+          location.href = "login.html?retUrl=" + location.href;
           return;
         }
         // (2) 当前用户已登录,  后台返回 购物车数据, 进行渲染
