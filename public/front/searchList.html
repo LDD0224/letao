@@ -36,59 +36,15 @@
         <!-- 乐淘排序 -->
         <div class="lt_sort">
           <a href="#"><span>上架时间</span><i class="fa fa-angle-down"></i></a>
-          <a href="#"><span>价格</span><i class="fa fa-angle-down"></i></a>
-          <a href="#"><span>库存</span><i class="fa fa-angle-down"></i></a>
+          <a href="#" data-type="price"><span>价格</span><i class="fa fa-angle-down"></i></a>
+          <a href="#" data-type="num"><span>库存</span><i class="fa fa-angle-down"></i></a>
           <a href="#"><span>折扣</span><i class="fa fa-angle-down"></i></a>
         </div>
 
         <!-- 产品区域 -->
         <div class="lt_product">
-          <ul class="mui-clearfix">
-            <li class="lt_product_item">
-              <a href="#">
-                <img src="./images/product.jpg" alt="">
-                <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                <p>
-                  <span class="price">¥560</span>
-                  <span class="oldPrice">¥580</span>
-                </p>
-                <button class="mui-btn mui-btn-danger">立即购买</button>
-              </a>
-            </li>
-            <li class="lt_product_item">
-              <a href="#">
-                <img src="./images/product.jpg" alt="">
-                <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                <p>
-                  <span class="price">¥560</span>
-                  <span class="oldPrice">¥580</span>
-                </p>
-                <button class="mui-btn mui-btn-danger">立即购买</button>
-              </a>
-            </li>
-            <li class="lt_product_item">
-              <a href="#">
-                <img src="./images/product.jpg" alt="">
-                <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                <p>
-                  <span class="price">¥560</span>
-                  <span class="oldPrice">¥580</span>
-                </p>
-                <button class="mui-btn mui-btn-danger">立即购买</button>
-              </a>
-            </li>
-            <li class="lt_product_item">
-              <a href="#">
-                <img src="./images/product.jpg" alt="">
-                <p class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700场下休闲篮球鞋S83700 </p>
-                <p>
-                  <span class="price">¥560</span>
-                  <span class="oldPrice">¥580</span>
-                </p>
-                <button class="mui-btn mui-btn-danger">立即购买</button>
-              </a>
-            </li>
-          </ul>
+          <!-- 挖个坑 -->
+          <div class="loading"></div>
         </div>
       </div>
     </div>
@@ -124,6 +80,25 @@
     </ul>
   </div>
 </div>
+
+<!-- 准备模板 -->
+<script type="text/html" id="productTpl">
+  <ul class="mui-clearfix">
+    {{ each data v i }}    
+      <li class="lt_product_item">
+        <a href="product.html?productId={{ v.id }}">
+          <img src="{{ v.pic[0].picAddr }}" alt="">
+          <p class="mui-ellipsis-2">{{ v.proName }} </p>
+          <p>
+            <span class="price">¥{{ v.price }}</span>
+            <span class="oldPrice">¥{{ v.oldPrice }}</span>
+          </p>
+          <button class="mui-btn mui-btn-danger">立即购买</button>
+        </a>
+      </li>
+    {{ /each }}
+  </ul>
+</script>
 
 <script src="./lib/mui/js/mui.js"></script>
 <script src="./lib/zepto/zepto.min.js"></script>
